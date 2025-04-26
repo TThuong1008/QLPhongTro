@@ -1,0 +1,71 @@
+body {
+    padding-bottom: 50px;
+    background-color: #f8f9fa;
+}
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d; 
+    --success-color: #28a745; 
+    --danger-color: #dc3545; 
+}
+
+.table thead th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.table-bordered {
+    border-color: var(--secondary-color);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #e9ecef; /* Màu nền cho hàng lẻ */
+}
+
+.table-hover tbody tr:hover {
+    background-color: #ced4da; /* Màu nền khi hover */
+}
+
+.btn {
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.is-invalid:focus {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}

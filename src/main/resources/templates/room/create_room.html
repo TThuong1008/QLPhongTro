@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo mới thông tin thuê trọ</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center mb-4" style="color: var(--primary-color);">Tạo mới thông tin thuê trọ</h2>
+        
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form th:action="@{/rooms/create}" th:object="${room}" method="post">
+                    <div class="form-group">
+                        <label for="roomId">Mã phòng trọ</label>
+                        <input type="text" class="form-control" id="roomId" th:field="*{roomId}" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tenantName">Tên người thuê <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="tenantName" th:field="*{tenantName}" 
+                               th:classappend="${#fields.hasErrors('tenantName')} ? 'is-invalid' : ''">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('tenantName')}"
+                             th:errors="*{tenantName}"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phoneNumber">Số điện thoại <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}"
+                               th:classappend="${#fields.hasErrors('phoneNumber')} ? 'is-invalid' : ''">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('phoneNumber')}"
+                             th:errors="*{phoneNumber}"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="startDate">Ngày bắt đầu thuê <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="startDate" th:field="*{startDate}"
+                               th:classappend="${#fields.hasErrors('startDate')} ? 'is-invalid' : ''">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('startDate')}"
+                             th:errors="*{startDate}"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="paymentType">Hình thức thanh toán <span class="text-danger">*</span></label>
+	                        <select class="form-control" id="paymentType" th:field="*{hinhThuc.id}">
+						    <option value="">-- Chọn hình thức thanh toán --</option>
+						    <option th:each="paymentType : ${paymentTypes}" 
+						            th:value="${paymentType.id}" 
+						            th:text="${paymentType.namePayment}"></option>
+						</select>
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('hinhThuc.id')}" th:errors="*{hinhThuc.id}"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Ghi chú</label>
+                        <textarea class="form-control" id="notes" th:field="*{notes}" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary mr-2">Tạo mới</button>
+                        <a th:href="@{/rooms}" class="btn btn-secondary">Hủy</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Format the date input to dd-mm-yyyy
+        document.addEventListener('DOMContentLoaded', function() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+            
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById('startDate').min = today;
+        });
+    </script>
+</body>
+</html>
