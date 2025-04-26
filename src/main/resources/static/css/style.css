@@ -1,37 +1,44 @@
-
 body {
     padding-bottom: 50px;
-    background-color: #ffffff;
+    background-color: #f8f9fa;
 }
 
 :root {
-    --primary-color: #2c3e50;   
-    --secondary-color: #3498db; 
-    --success-color: #27ae60;   
-    --danger-color: #e74c3c;  
+    --primary-color: #007bff;
+    --secondary-color: #6c757d; 
+    --success-color: #28a745; 
+    --danger-color: #dc3545; 
 }
+
 .table thead th {
-        background-color: #ff69b4 !important;
-        color: white !important;
-        border-color: var(--pink-primary) !important;
-    }
+    background-color: var(--primary-color);
+    color: white;
+}
 
 .table-bordered {
-        border-color: #ff69b4 !important;
-    }
+    border-color: var(--secondary-color);
+}
 
 .table-striped tbody tr:nth-of-type(odd) {
-        background-color: #ffc0cb !important;
-    }
+    background-color: #e9ecef; /* Màu nền cho hàng lẻ */
+}
 
 .table-hover tbody tr:hover {
-        background-color: #ffb6c1 !important;
-    }
+    background-color: #ced4da; /* Màu nền khi hover */
+}
 
+.btn {
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
 
 .btn-primary:hover {
-    background-color: #34495e;
-    border-color: #34495e;
+    background-color: darken(var(--primary-color), 10%);
 }
 
 .btn-success {
@@ -44,42 +51,21 @@ body {
     border-color: var(--danger-color);
 }
 
-.table thead th {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(44, 62, 80, 0.05);
-}
-
-.table-hover tbody tr:hover {
-    background-color: rgba(44, 62, 80, 0.1);
-}
-
 .form-control:focus {
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+
 .table th, .table td {
     vertical-align: middle;
-}
-
-.btn {
-	transition: all 0.3s ease;
-    border-radius: 3px;
 }
 
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.form-control:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
 
 .is-invalid:focus {
-    border-color: #dc3545;
+    border-color: var(--danger-color);
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
